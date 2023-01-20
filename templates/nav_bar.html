@@ -1,0 +1,73 @@
+<nav class="navbar  navbar-expand-lg navbar-light bg-success">
+      <div class="container-fluid">
+        <a class="navbar-brand  text-light" href="{% url 'home' %}">Elite Rental Bunglow</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="float-end">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link  text-light" aria-current="page" href="{% url 'home' %}">Home</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Services
+                      </a>
+                      <ul class="dropdown-menu bg-success text-light" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item text-light" href="#rent">Rent a Bunglow</a></li>
+                          <li><a class="dropdown-item text-light" href="#resort">Book a resort</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-light" href="{% url 'about' %}">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="{% url 'contact' %}">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#login">Login</a>
+                  <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header bg-success">
+                          <h5 class="modal-title text-light" id="loginLabel">Login</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                          <form action="{% url 'home' %}" method="post">
+                            {% csrf_token %}
+                            
+                            {% for fm in form %}
+                            <div class="form-group m-2">
+                                {{fm.label_tag}}{{fm}}
+                            </div>
+                            {% endfor %}
+                            <!-- <div class="form-group py-3">
+                                <button class="btn btn-primary mx-2 px-4" type="submit">Login</button>
+                                <a href="{% url 'register' %}" class="mx-4">Register</a>      
+                            </div> -->
+                            <div class="text-center">
+                              <button type="submit" class="btn btn-success">Login</button>
+                            </div>
+        
+                          </form>
+
+
+                          <div class="text-center m-4">
+                            <span>Don't have a account?</span>
+                            <span><a href="{% url 'register' %}">Click here to sign up</a></span>                           
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </li>
+              </ul>
+            </div>
+        </div>
+      </div>
+</nav>

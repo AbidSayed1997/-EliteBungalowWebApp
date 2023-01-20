@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+    <div class="container shadow p-5 my-5">
+
+        <p class="display-5 text-center">Welcome to {{data.location_name}} , Great Choice of location</p>
+        <p class="fs-5 text-center">Here is the list of Bunglows below, select as you like</p>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+           {% for d in data2 %}
+
+                <div class="col-lg-4 col-sm-12 py-2">
+                    <div class="card p-3">
+                        <img src="{{d.images.url}}" alt="" class="img-top mb-2" height="200px">
+                        <h3 class="card-title">{{d.bunglow_name}}</h3>
+                        <p class="card-text">{{d.room_size}}</p>
+                        <p class="card-text">{{d.amenites}}</p>
+                        <a href="{% url 'bunglow_details' d.id %}" class="btn btn-success w-50">Show</a>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+            
+        </div>
+    </div>
+
+
+{% endblock content %}
